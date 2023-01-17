@@ -1,0 +1,54 @@
+import sys
+import math
+
+# w: width of the building.
+# h: height of the building.
+w, h = [int(i) for i in input().split()]
+n = int(input())
+x0, y0 = [int(i) for i in input().split()] # starting position
+s_of_x = 0
+s_of_y = 0
+e_of_x = w - 1
+e_of_y = h - 1
+
+while True:
+    direction = input()  
+
+
+    if(direction == "U"):  #up
+        e_of_y = y0 - 1
+
+    elif(direction == "UR"):   #up right
+        s_of_x = x0 + 1
+        e_of_y = y0 - 1
+
+    elif(direction == "R"):    #right
+        s_of_x = x0 + 1
+
+    elif(direction == "DR"):   #down right
+        s_of_x = x0 + 1
+        s_of_y = y0 + 1
+
+    elif(direction == "D"):    #down
+        s_of_y = y0 + 1
+
+    elif(direction == "DL"):   #down left
+        e_of_x = x0 - 1
+        s_of_y = y0 + 1
+
+    elif(direction == "L"):    #left    
+        e_of_x = x0 - 1
+
+    elif(direction == "UL"):   # up left
+        e_of_x = x0 - 1
+        e_of_y = y0 - 1
+
+    if(s_of_y <= e_of_y):
+        y0 = (e_of_y - s_of_y)//2 + s_of_y
+
+    if(s_of_x <= e_of_x):
+        x0 = (e_of_x - s_of_x)//2 + s_of_x 
+
+
+    print(str(x0)+" "+str(y0))
+     
